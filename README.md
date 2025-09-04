@@ -186,57 +186,6 @@ Check model availability:
 ollama list
 ```
 
----
-
-## Troubleshooting
-
-* **“Ingest failed: fetch failed” (UI alert)**
-  Ollama not running or wrong host. Start `ollama serve`.
-  Test embeddings:
-
-  ```bash
-  curl -s http://127.0.0.1:11434/api/embeddings \
-    -H "Content-Type: application/json" \
-    -d '{"model":"nomic-embed-text","prompt":"hello"}'
-  ```
-
-  If error → `ollama pull nomic-embed-text`.
-
-* **macOS crash / “Not allowed to attach to process”**
-  Enable **Privacy & Security → Developer Tools** for Terminal/iTerm/VS Code, restart terminal, then `ollama serve`.
-
-* **`model not found` in backend logs**
-  Pull it: `ollama pull mistral:7b-instruct` (or whatever you configured).
-
-* **No answers / wrong summary**
-  Re-ingest after updating code:
-
-  ```bash
-  rm -rf apps/backend/.vector_store .vector_store
-  npm run dev
-  # re-upload PDFs
-  ```
-
-* **`.vector_store/args.json` missing**
-  Index hasn’t been created yet. Ingest at least one PDF.
-
-* **CORS / SSE drops**
-  GET `/api/chat` sets `Access-Control-Allow-Origin: *` and `X-Accel-Buffering: no`.
-  Frontend auto-falls back to POST stream if EventSource fails.
-
----
-
-## Production Notes (quick)
-
-* Reverse proxy should **not buffer** SSE:
-
-  * Nginx: `proxy_buffering off;`
-  * Cloudflare: enable “no buffering” / “bypass cache”.
-* Serve Next.js behind the same domain as the API to avoid CORS, or keep the permissive CORS header on SSE.
-* Persistent storage: mount/backup `.vector_store/`.
-
----
-
 ## Security & Privacy
 
 * All processing happens locally; PDFs are not uploaded to third-party services.
