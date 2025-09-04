@@ -1,0 +1,1 @@
+export type SourceRef = { filename: string; pageNumber: number };

@@ -1,0 +1,16 @@
+cat > .gitignore << 'EOF'
+.DS_Store
+.vscode/
+node_modules/
+.next/
+out/
+dist/
+coverage/
+turbo/
+**/.turbo/
+.env
+.env.*.local
+apps/backend/.vector_store/
+apps/frontend/.next/
+*.log
+.venv/

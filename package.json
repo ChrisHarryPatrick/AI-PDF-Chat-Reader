@@ -1,0 +1,17 @@
+{
+"name": "ai-pdf-reader",
+"private": true,
+"workspaces": ["apps/*"],
+
+  "scripts": {
+    "dev": "concurrently \"npm run -w apps/backend dev\" \"npm run -w apps/frontend dev\"",
+    "build": "npm run -w apps/backend build && npm run -w apps/frontend build",
+    "start": "concurrently \"npm run -w apps/backend start\" \"npm run -w apps/frontend start\""
+  },
+
+
+"devDependencies": {
+"concurrently": "^9.0.0"
+}
+}
+

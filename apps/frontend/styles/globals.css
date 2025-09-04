@@ -1,0 +1,153 @@
+:root {
+  --bg: #0b0c0f;
+  --panel: #121417;
+  --muted: #a3a7ae;
+  --text: #e8eaee;
+  --accent: #4c8bf5;
+  --radius: 14px;
+}
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.5 ui-sans-serif, system-ui, Segoe UI, Roboto, Arial;
+}
+
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 24px 16px 120px;
+}
+.header {
+  text-align: center;
+  margin-bottom: 18px;
+}
+.header h1 {
+  margin: 0 0 6px;
+  font-weight: 700;
+}
+.header p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.messages {
+  display: grid;
+  gap: 12px;
+}
+.empty {
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+}
+.muted {
+  color: var(--muted);
+}
+
+.bubble {
+  border: 1px solid #22252b;
+  background: var(--panel);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  max-width: 760px;
+}
+.bubble.user {
+  margin-left: auto;
+  background: linear-gradient(180deg, #1d2230, #171b25);
+  border-color: #2a2f3a;
+}
+.bubble.bot {
+  margin-right: auto;
+  background: linear-gradient(180deg, #151a21, #121417);
+  border-color: #262a33;
+}
+.content {
+  white-space: pre-wrap;
+}
+
+.sources {
+  margin-top: 8px;
+}
+.sources summary {
+  cursor: pointer;
+  color: var(--accent);
+}
+
+.composer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #0b0c0f;
+  border-top: 1px solid #1e2228;
+  padding: 10px 12px;
+}
+.composer .files {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 0 0 8px;
+}
+.file {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #0f1115;
+  border: 1px solid #1f232a;
+  padding: 8px 10px;
+  border-radius: 12px;
+}
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #e91e63;
+}
+.fname {
+  max-width: 360px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.link {
+  background: none;
+  border: none;
+  color: var(--accent);
+  cursor: pointer;
+  padding: 0;
+}
+
+.row {
+  display: flex;
+  gap: 8px;
+}
+.input {
+  flex: 1;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid #232832;
+  background: #0f1115;
+  color: var(--text);
+}
+.btn {
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid #232832;
+  background: #131722;
+  color: #e8eaee;
+  cursor: pointer;
+}
+.btn.primary {
+  background: var(--accent);
+  border-color: transparent;
+  color: #fff;
+}
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
